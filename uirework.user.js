@@ -1,0 +1,76 @@
+// ==UserScript==
+// @name         GeoGuessr Spectate UI Rework
+// @namespace    123cobloc
+// @version      1.0
+// @description  Applies custom CSS on the spectate page
+// @author       123cobloc
+// @match        https://www.geoguessr.com/*
+// @grant        none
+// @run-at       document-start
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    const value = 23;
+    const styleId = "custom-spectate-style";
+
+    const newCss = `
+        div[class*="spectate-sidebar_root"] {
+            display: none !important;
+        }
+
+        div[class*="spectate-header_root"] {
+            height: ${value}svh !important;
+            width: ${value * 2.25}svw !important;
+            margin: 0 auto !important;
+        }
+
+        div[class*="spectate_layout_root"] {
+            padding: calc(10svw / 6) !important;
+        }
+
+        div[class*="settings_settingsButtonContainer"] {
+            top: 2.5svh !important;
+            right: 1.5svw !important;
+            bottom: auto !important;
+            left: auto !important;
+        }
+
+        div[class*="spectate-map_buttonWrapper"] {
+            bottom: calc(10svw / -6.3) !important;
+        }
+    `;
+
+    function applyStyle() {
+        const isSpectatePage = /\/duels\/.*\/spectate/.test(window.location.href);
+        let styleElement = document.getElementById(styleId);
+
+        if (isSpectatePage && !styleElement) {
+            styleElement = document.createElement("style");
+            styleElement.id = styleId;
+            styleElement.textContent = newCss;
+            document.documentElement.appendChild(styleElement);
+        } else if (!isSpectatePage && styleElement) {
+            styleElement.remove();
+        }
+    }
+
+    const originalPushState = history.pushState;
+    const originalReplaceState = history.replaceState;
+
+    history.pushState = function() {
+        originalPushState.apply(this, arguments);
+        applyStyle();
+    };
+
+    history.replaceState = function() {
+        originalReplaceState.apply(this, arguments);
+        applyStyle();
+    };
+
+    window.addEventListener('popstate', applyStyle);
+
+    applyStyle();
+
+})();
