@@ -1,14 +1,17 @@
 # GeoGuessr Spectate UI Rework
 
-A lightweight UserScript to clean up and customize the GeoGuessr Spectate interface.
+A lightweight UserScript to clean up and customize the GeoGuessr Spectate interface for a more focused and immersive experience.
 
-## ✨ What this does
-- **Hides the Sidebar:** Removes the `spectate-sidebar` for a more immersive view.
-- **Custom Header:** Resizes the `spectate-header` to improve gameplay visibility.
+## ✨ Features
+- **Hide Sidebar:** Automatically removes the sidebar to maximize the map view.
+- **Custom Header:** Resizes the header to improve gameplay visibility during duels.
+- **Adjustable Scale:** Customize the header height directly from the extension menu without touching the code.
+
+---
 
 ## 🚀 Installation
 
-#### 1. Install a Script Manager
+### 1. Install a Script Manager
 To run this script, you first need to install a browser extension that manages UserScripts. Choose the one for your browser:
 
 | Browser | Recommended Extension | Link |
@@ -23,10 +26,24 @@ Once your manager is installed, click the button below to add the script to your
 
 [![Install Direct](https://img.shields.io/badge/Install-Direct-green?style=for-the-badge&logo=tampermonkey)](https://github.com/123cobloc/geoguessr-ui-rework/raw/main/uirework.user.js)
 
-*Note: A new tab will open. Click **"Install"** or **"Confirm"** in the Tampermonkey dashboard to finish.*
+*Note: A new tab will open. Click **"Install"** in the Tampermonkey dashboard to finish.*
 
-##
+---
+
+## ⚙️ Customization
+
+You can change the size of the header at any time using the built-in menu command.
+
+### How to change the size of the header:
+1. Open [GeoGuessr](https://www.geoguessr.com).
+2. Click the **Tampermonkey extension icon** in your browser toolbar.
+3. Locate **GeoGuessr Spectate UI Rework** in the list.
+4. Click on **"Set header height"**.
+5. Enter a **numeric value** in the popup (representing the percentage of screen height).
+6. Click **"OK"** to apply.
+
+---
 
 This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for the full text.
 
-*This script is not affiliated with, maintained, or endorsed by GeoGuessr.*
+*This script is an independent project and is not affiliated with, maintained, or endorsed by GeoGuessr.*
